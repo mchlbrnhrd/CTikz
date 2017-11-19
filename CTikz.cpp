@@ -227,7 +227,7 @@ void CTikz::createTikzFile(const std::string& filename,
     ss << "% info: " << m_info << std::endl;
     ss << "% " << std::endl;
     ss << "\\begin{tikzpicture}" << std::endl;
-    for (auto it = m_additionalsCommandsAfterBeginTikzPicture.begin(); it != m_additionalsCommandsAfterBeginTikzPicture.end(); ++it) {
+    for (std::vector<std::string>::iterator it = m_additionalsCommandsAfterBeginTikzPicture.begin(); it != m_additionalsCommandsAfterBeginTikzPicture.end(); ++it) {
         ss << *it << std::endl;
     }
     ss << "\\begin{axis}[" << std::endl;
@@ -304,8 +304,8 @@ void CTikz::createTikzFile(const std::string& filename,
             if (!m_matrixData.empty()) {
                 ss << "\\addplot [" << m_addPlotStyle.at(0) << "]" << std::endl;
                 ss << " coordinates{"<< std::endl;
-                for (auto row=0; row < m_matrixData.size(); ++row) {
-                    for (auto col=0; col < m_matrixData.at(row).size(); ++col) {
+                for (int row=0; row < m_matrixData.size(); ++row) {
+                    for (int col=0; col < m_matrixData.at(row).size(); ++col) {
                         ss << "(" << col << "," << row << ") [" << m_matrixData.at(row).at(col) << "]" << std::endl;
                     }
                     ss << std::endl;
@@ -315,7 +315,7 @@ void CTikz::createTikzFile(const std::string& filename,
         }
     }
     ss << std::endl;
-    for (auto it = m_additionalsCommands.begin(); it != m_additionalsCommands.end(); ++it) {
+    for (std::vector<std::string>::iterator it = m_additionalsCommands.begin(); it != m_additionalsCommands.end(); ++it) {
         ss << *it << std::endl;
     }
     ss << std::endl;
@@ -361,7 +361,7 @@ void CTikz::createSecondAxisCode(std::string &secondAxisCode) {
     }
     ss << "legend style={" << m_legendStyle << "}" << std::endl;
     ss << "]" << std::endl;
-    for (auto k=0; k < m_legend.size() - m_data.size(); ++k) {
+    for (int k=0; k < m_legend.size() - m_data.size(); ++k) {
          ss << "\\addlegendimage{/pgfplots/refstyle=addPlotLabel_" << m_id << "_" << k << "}" << std::endl;
          ss << "\\addlegendentry{" << m_legend.at(k) << "};" << std::endl;
     }
@@ -379,7 +379,7 @@ void CTikz::createSecondAxisCode(std::string &secondAxisCode) {
         }
     }
     ss << std::endl;
-    for (auto it = m_additionalsCommands.begin(); it != m_additionalsCommands.end(); ++it) {
+    for (std::vector<std::string>::iterator it = m_additionalsCommands.begin(); it != m_additionalsCommands.end(); ++it) {
         ss << *it << std::endl;
     }
     ss << std::endl;
@@ -669,7 +669,7 @@ void CTikz::setLegendTitle(const std::string &legendTitle)
 
 std::string CTikz::trimFilename(const std::string &filename) {
     std::string f = filename;
-    auto pos = filename.rfind("/");
+    std::size_t pos = filename.rfind("/");
     if (pos !=std::string::npos) {
         f = filename.substr(pos+1);
     } else {
