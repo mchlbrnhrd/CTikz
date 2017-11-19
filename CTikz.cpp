@@ -9,6 +9,7 @@
 #include <fstream>
 #include <iostream>
 #include <ctime>
+#include <cstdlib>
 #include "CTikz.hpp"
 #include "CException.hpp"
 
