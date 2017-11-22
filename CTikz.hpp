@@ -127,6 +127,7 @@ public:
     void setSecondAxisCode(const std::string& secondAxisCode);
     
     void setAdditionalLatexCommands(const std::string& additionalLatexCommands);
+    void addAdditionalLatexCommands(const std::string &additionalLatexCommands);
     void setAuthor(const std::string& author);
     void setInfo(const std::string& info);
     

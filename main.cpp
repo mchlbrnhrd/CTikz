@@ -80,6 +80,68 @@ int main(int argc, const char * argv[]) {
     
     
     
+    // --------- third example ---------
+    std::cout << "run third example" << std::endl;
+    
+    
+    CTikz tikz3;
+    
+    
+    // add all data and secify user defined colors which are defined in your latex document
+    // also change linestyle and marker and add comment in tikz file
+    tikz3.addData(dataA, "dataA", "myRed");
+    tikz3.addAddPlotStyle("dashed,mark=square, mark options={solid}, mark repeat=10");
+    tikz3.addDataComment("Comment for data A in tikz file");
+    
+    tikz3.addData(dataB, "dataB", "myBlue");
+    tikz3.addAddPlotStyle("dotted,mark=*, mark options={solid}, mark repeat=10");
+    tikz3.addDataComment("Comment for data B in tikz file");
+    
+    // when creating pdf files out from this c++ program, then define the user defined colors
+    tikz3.addAdditionalLatexCommands("\\definecolor{myRed}{RGB}{220,30,30}");
+    tikz3.addAdditionalLatexCommands("\\definecolor{myGreen}{RGB}{20,200,30}");
+    tikz3.addAdditionalLatexCommands("\\definecolor{myBlue}{RGB}{20,30,210}");
+    
+    
+    
+    // switch grid on
+    tikz3.gridOn();
+    
+    
+    
+    // set title, x label and y label
+    tikz3.setTitle("Third example");
+    // use your own latex abbreviations
+    tikz3.setLabel("$\\samplingfrequency$", "$\\snr$");
+    
+    // when creating pdf files out from this c++ program, then define your latex abbreviations
+    tikz3.addAdditionalLatexCommands("\\newcommand{\\samplingfrequency}[0]{f_\\mathrm{S}}");
+    tikz3.addAdditionalLatexCommands("\\newcommand{\\snr}[0]{\\gamma}");
+    
+    
+    
+    // set author and info text for tikz file
+    tikz3.setAuthor("Michael Bernhard");
+    tikz3.setInfo("some info text for tikz file");
+    
+    
+    
+    // modify legend (add title, draw out of diagram and without extra border)
+    tikz3.setLegendTitle("My legend title");
+    tikz3.setLegendStyle("draw=none");
+    tikz3.addAdditionalSettings("legend pos={outer north east}");
+    
+
+    
+    // add some nodes
+    tikz3.addNode(10, -0.5, "nodeA", "myRed", "south");
+    tikz3.addNode(40, -0.5, "nodeB", "myGreen", "north");
+    
+    
+    
+    // create tikz and pdf file
+    tikz3.createTikzPdf("third.tikz");
+    
     
     
     

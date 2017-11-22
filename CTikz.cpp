@@ -642,6 +642,12 @@ void CTikz::setAdditionalLatexCommands(const std::string &additionalLatexCommand
     m_additionalLatexCommands = additionalLatexCommands;
 }
 
+void CTikz::addAdditionalLatexCommands(const std::string &additionalLatexCommands)
+{
+    m_additionalLatexCommands += "\n";
+    m_additionalLatexCommands += additionalLatexCommands;
+}
+
 void CTikz::setAuthor(const std::string &author)
 {
     m_author = author;
