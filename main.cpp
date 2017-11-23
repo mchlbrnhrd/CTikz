@@ -15,33 +15,57 @@ int main(int argc, const char * argv[]) {
     std::cout << "CTikz example" << std::endl;
     
     
+    const int N = 100;
+    
+    
     // --------- first example ---------
-    std::cout << "run first example" << std::endl;
+    std::cout << "run first example (using std::vector)" << std::endl;
     
     // example data x and y are stored in two vectors
     std::vector<double> exampleX;
     std::vector<double> exampleY;
-    const int N = 100;
     for (int x=-N/2; x < N/2; ++x) {
         int y = x * x;
         exampleX.push_back(x);
         exampleY.push_back(y);
     }
-    
-    CTikz tikzA;
+    CTikz tikz1;
     
     // add data
-    tikzA.addData(exampleX, exampleY);
+    tikz1.addData(exampleX, exampleY);
     
     // create tikz and pdf file
-    tikzA.createTikzPdf("example.tikz");
-    
-    
+    tikz1.createTikzPdf("example1.tikz");
     
     
     
     // --------- second example ---------
-    std::cout << "run second example" << std::endl;
+    std::cout << "run second example (using c array)" << std::endl;
+    
+    // example data x and y are stored in two c array
+    double dataX[N];
+    double dataY[N];
+    int index = 0;
+    for (int x=-N/2; x < N/2; ++x) {
+        int y = x * x;
+        dataX[index] = x;
+        dataY[index] = y;
+        index++;
+    }
+    
+    CTikz tikz2;
+    
+    // add data
+    tikz2.addData(dataX, dataY, N);
+    
+    // create tikz and pdf file
+    tikz2.createTikzPdf("example2.tikz");
+    
+    
+    
+    
+    // --------- third example ---------
+    std::cout << "run third example (using std::vector and two data sets)" << std::endl;
     
     // data example A are stored into a vector which contains pairs of double for x and y
     std::vector<std::pair<double, double> > dataA;
@@ -57,90 +81,83 @@ int main(int argc, const char * argv[]) {
         dataB.push_back(std::make_pair(x, yB));
     }
     
-    CTikz tikz2;
-    
-    // add all data
-    tikz2.addData(dataA, "dataA");
-    tikz2.addData(dataB, "dataB");
-    
-    // switch grid on
-    tikz2.gridOn();
-    
-    // set title, x label and y label
-    tikz2.setTitle("Second example");
-    tikz2.setLabel("x", "y");
-    
-    // set author and info text for tikz file
-    tikz2.setAuthor("Michael Bernhard");
-    tikz2.setInfo("some info text for tikz file");
-    
-    // create tikz and pdf file
-    tikz2.createTikzPdf("second.tikz");
-    
-    
-    
-    
-    // --------- third example ---------
-    std::cout << "run third example" << std::endl;
-    
-    
     CTikz tikz3;
     
-    
-    // add all data and secify user defined colors which are defined in your latex document
-    // also change linestyle and marker and add comment in tikz file
-    tikz3.addData(dataA, "dataA", "myRed");
-    tikz3.addAddPlotStyle("dashed,mark=square, mark options={solid}, mark repeat=10");
-    tikz3.addDataComment("Comment for data A in tikz file");
-    
-    tikz3.addData(dataB, "dataB", "myBlue");
-    tikz3.addAddPlotStyle("dotted,mark=*, mark options={solid}, mark repeat=10");
-    tikz3.addDataComment("Comment for data B in tikz file");
-    
-    // when creating pdf files out from this c++ program, then define the user defined colors
-    tikz3.addAdditionalLatexCommands("\\definecolor{myRed}{RGB}{220,30,30}");
-    tikz3.addAdditionalLatexCommands("\\definecolor{myGreen}{RGB}{20,200,30}");
-    tikz3.addAdditionalLatexCommands("\\definecolor{myBlue}{RGB}{20,30,210}");
-    
-    
+    // add all data
+    tikz3.addData(dataA, "dataA");
+    tikz3.addData(dataB, "dataB");
     
     // switch grid on
     tikz3.gridOn();
     
-    
-    
     // set title, x label and y label
-    tikz3.setTitle("Third example");
-    // use your own latex abbreviations
-    tikz3.setLabel("$\\samplingfrequency$", "$\\snr$");
-    
-    // when creating pdf files out from this c++ program, then define your latex abbreviations
-    tikz3.addAdditionalLatexCommands("\\newcommand{\\samplingfrequency}[0]{f_\\mathrm{S}}");
-    tikz3.addAdditionalLatexCommands("\\newcommand{\\snr}[0]{\\gamma}");
-    
-    
+    tikz3.setTitle("Second example");
+    tikz3.setLabel("x", "y");
     
     // set author and info text for tikz file
     tikz3.setAuthor("Michael Bernhard");
     tikz3.setInfo("some info text for tikz file");
     
+    // create tikz and pdf file
+    tikz3.createTikzPdf("example3.tikz");
     
+    
+    
+    
+    // --------- fourth example ---------
+    std::cout << "run fourth example (using std::vector, two data sets and additional settings)" << std::endl;
+    
+    
+    CTikz tikz4;
+    
+    
+    // add all data and specify user defined colors which are defined in your latex document
+    // also change linestyle and marker and add comment in tikz file
+    tikz4.addData(dataA, "dataA", "myRed");
+    tikz4.addAddPlotStyle("dashed, mark=square, mark options={solid}, mark repeat=10");
+    tikz4.addDataComment("Comment for data A in tikz file");
+    
+    tikz4.addData(dataB, "dataB", "myBlue");
+    tikz4.addAddPlotStyle("dotted, mark=*, mark options={solid}, mark repeat=10");
+    tikz4.addDataComment("Comment for data B in tikz file");
+    
+    // when creating pdf files out from this c++ program, then define the user defined colors
+    tikz4.addAdditionalLatexCommands("\\definecolor{myRed}{RGB}{220,30,30}");
+    tikz4.addAdditionalLatexCommands("\\definecolor{myGreen}{RGB}{20,200,30}");
+    tikz4.addAdditionalLatexCommands("\\definecolor{myBlue}{RGB}{20,30,210}");
+    
+    // switch grid on
+    tikz4.gridOn();
+    
+    // set title, x label and y label
+    tikz4.setTitle("Third example");
+    // use your own latex abbreviations
+    tikz4.setLabel("$\\samplingfrequency$", "$\\snr$");
+    
+    // when creating pdf files out from this c++ program, then define your latex abbreviations
+    tikz4.addAdditionalLatexCommands("\\newcommand{\\samplingfrequency}[0]{f_\\mathrm{S}}");
+    tikz4.addAdditionalLatexCommands("\\newcommand{\\snr}[0]{\\gamma}");
+    
+    // set author and info text for tikz file
+    tikz4.setAuthor("Michael Bernhard");
+    tikz4.setInfo("some info text for tikz file");
     
     // modify legend (add title, draw out of diagram and without extra border)
-    tikz3.setLegendTitle("My legend title");
-    tikz3.setLegendStyle("draw=none");
-    tikz3.addAdditionalSettings("legend pos={outer north east}");
-    
-
+    tikz4.setLegendTitle("My legend title");
+    tikz4.setLegendStyle("draw=none");
+    tikz4.addAdditionalSettings("legend pos={outer north east}");
     
     // add some nodes
-    tikz3.addNode(10, -0.5, "nodeA", "myRed", "south");
-    tikz3.addNode(40, -0.5, "nodeB", "myGreen", "north");
-    
-    
+    tikz4.addNode(10, -0.5, "nodeA", "myRed", "south");
+    tikz4.addNode(40, -0.5, "nodeB", "myGreen", "north");
     
     // create tikz and pdf file
-    tikz3.createTikzPdf("third.tikz");
+    tikz4.createTikzPdf("example4.tikz");
+    
+    
+    
+
+
     
     
     

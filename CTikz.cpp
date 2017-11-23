@@ -29,8 +29,8 @@ void CTikz::clear() {
     m_xlabel = "";
     m_ylabel = "";
     m_legendStyle = "draw=black,fill=white, legend cell align=left";
-    m_width =  "9.899cm";
-    m_height = "6.118cm";
+    m_width =  "10cm";
+    m_height = "6cm";
     m_data.clear();
     m_matrixData.clear();
     m_useAutoRangeX = true;
@@ -88,6 +88,12 @@ void CTikz::setLabel(const std::string& xlabel, const std::string& ylabel) {
     setYlabel(ylabel);
 }
 
+// set data via c array. size is size of array dataX and dataY.
+void CTikz::setData(const double *dataX, const double *dataY, int size) {
+    m_data.clear();
+    addData(dataX, dataY, size);
+}
+
 void CTikz::setData(const std::vector<std::pair<double, double> >& data) {
     m_data.clear();
     addData(data);
@@ -133,6 +139,24 @@ void CTikz::addData(const std::vector<std::pair<double, double> >& data) {
         } else {
             m_color.push_back("black");
         }
+    }
+}
+
+// add data via c array. size is size of array dataX and dataY.
+void CTikz::addData(const double *dataX, const double *dataY, int size) {
+    if ((0 == dataX) || (0 == dataY)) {
+        throw CException("Null pointer");
+    }
+    else
+    {
+        std::vector<std::pair<double, double> > tmp;
+        for (int k = 0; k < size; ++k) {
+            std::pair<double, double> dataEntry = std::make_pair(*dataX, *dataY);
+            tmp.push_back(dataEntry);
+            dataX++;
+            dataY++;
+        }
+        addData(tmp);
     }
 }
 

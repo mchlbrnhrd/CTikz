@@ -6,8 +6,8 @@
 \begin{tikzpicture}
 \begin{axis}[
 >=latex,
-width=9.899cm,
-height=6.118cm,
+width=10cm,
+height=6cm,
 scale only axis,
 xmin=-50,
 xmax=49,
@@ -18,7 +18,7 @@ ylabel={},
 title={},
 legend style={draw=black,fill=white, legend cell align=left}
 ]
-\addplot [color=color_blue,solid]
+\addplot [color=ctikzColorBlue,solid]
   table[row sep=crcr]{%
 -50	2500\\
 -49	2401\\
@@ -121,7 +121,7 @@ legend style={draw=black,fill=white, legend cell align=left}
 48	2304\\
 49	2401\\
 };
-\label{addPlotLabel_31903851_0}
+\label{addPlotLabel_94175949_0}
 
 
 \end{axis}

@@ -6,24 +6,21 @@
 \begin{tikzpicture}
 \begin{axis}[
 >=latex,
-width=9.899cm,
-height=6.118cm,
+width=10cm,
+height=6cm,
 scale only axis,
 xmin=-50,
 xmax=49,
-xlabel={$\samplingfrequency$},
+xlabel={x},
 xmajorgrids,
 ymin=-1,
 ymax=1,
-ylabel={$\snr$},
+ylabel={y},
 ymajorgrids,
-title={Third example},
-legend pos={outer north east},
-legend style={draw=none}
+title={Second example},
+legend style={draw=black,fill=white, legend cell align=left}
 ]
-\addlegendimage{empty legend}
-\addplot [color=myRed,dashed,mark=square, mark options={solid}, mark repeat=10]
-% Comment for data A
+\addplot [color=ctikzColorBlue,solid]
   table[row sep=crcr]{%
 -50	1\\
 -49	0.9604\\
@@ -126,11 +123,9 @@ legend style={draw=none}
 48	0.9216\\
 49	0.9604\\
 };
-\label{addPlotLabel_62749388_0}
-\addlegendentry{\hspace{-.6cm}My legend title};
+\label{addPlotLabel_94226370_0}
 \addlegendentry{dataA};
-\addplot [color=myBlue,dotted,mark=*, mark options={solid}, mark repeat=10]
-% Comment for data B
+\addplot [color=ctikzColorRed,solid]
   table[row sep=crcr]{%
 -50	-1\\
 -49	-0.941192\\
@@ -233,11 +228,9 @@ legend style={draw=none}
 48	0.884736\\
 49	0.941192\\
 };
-\label{addPlotLabel_62749388_1}
+\label{addPlotLabel_94226370_1}
 \addlegendentry{dataB};
 
-\node at (axis cs:10,-0.5) [text=myRed,anchor=south,rotate=0,font=\small] {nodeA};
-\node at (axis cs:40,-0.5) [text=myGreen,anchor=north,rotate=0,font=\small] {nodeB};
 
 \end{axis}
 \end{tikzpicture}%

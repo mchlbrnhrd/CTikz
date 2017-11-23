@@ -1,9 +1,12 @@
 CTikzApp
 
 # generated files from running CTikzApp
-example.tikz
-example.tikz.latex.pdf
-second.tikz
-second.tikz.latex.pdf
-third.tikz
-third.tikz.latex.pdf
+example1.tikz
+example1.tikz.latex.pdf
+example2.tikz
+example2.tikz.latex.pdf
+example3.tikz
+example3.tikz.latex.pdf
+example4.tikz
+example4.tikz.latex.pdf
+

@@ -49,12 +49,18 @@ public:
         return m_data;
     }
     
+    // set data via c array. size is size of array dataX and dataY.
+    void setData(const double *dataX, const double *dataY, int size);
+    
     void setData(const std::vector<double>& dataX, const std::vector<double>& dataY);
     void setData(const std::vector<double>& dataX, const std::vector<double>& dataY, const std::string& legend);
     void setData(const std::vector<double>& dataX, const std::vector<double>& dataY, const std::string& legend, const std::string& color);
     
     void setColorForNextDataSet(const std::string& color);
     
+    // add data via c array. size is size of array dataX and dataY.
+    void addData(const double *dataX, const double *dataY, int size);
+        
     void addData(const std::vector<std::pair<double, double> >& data);
     void addData(const std::vector<std::pair<double, double> >& data, const std::string& legend);
     void addData(const std::vector<std::pair<double, double> >& data, const std::string& legend, const std::string& color);
