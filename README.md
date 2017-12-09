@@ -20,4 +20,4 @@ C++ class CTikz to create TikZ file which can be used for latex. It is suitable 
 > ./CTikzApp
 ```
 
-Two example tikz files will be created with corresponding pdf files.
+Four example tikz files will be created with corresponding pdf files.
