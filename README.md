@@ -1,5 +1,5 @@
 # CTikz
-C++ class CTikz to create TikZ file which can be used for latex. It is suitable to create charts out of a data array or data vector from C++.
+When writing thesis or paper in LaTeX and you have done data analysis in C++ or don't like the default Matlab graphics then CTikz can be used to create TikZ files for your LaTeX document. This C++ class CTikz creates TikZ files and as preview a pdf of the graphic. It is suitable to create charts out of a C data array (*double x[10]*) or data vector (*std::vector\<double\> x*) from C++. 
 
 ## Example picture
 ![example picture](/doc/second.tikz.latex.png)
@@ -15,6 +15,7 @@ tikz.addData(x, y, N);
 tikz.createTikzPdf("example.tikz");
 ```
 
+Complete examples in [main.cpp](main.cpp).
 ## How to start
 
 1. clone project
