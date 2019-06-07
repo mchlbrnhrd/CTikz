@@ -3,6 +3,18 @@ C++ class CTikz to create TikZ file which can be used for latex. It is suitable 
 
 ## Example picture
 ![example picture](/doc/second.tikz.latex.png)
+
+## Code
+```C++
+CTikz tikz;
+const int N = 100;
+double x[N];
+double y[N];
+// ...
+tikz.addData(x, y, N);
+tikz.createTikzPdf("example.tikz");
+```
+
 ## How to start
 
 1. clone project
