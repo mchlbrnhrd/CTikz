@@ -9,25 +9,31 @@
 #include <iostream>
 #include <vector>
 #include "CTikz.hpp"
+#include "CException.hpp"
+
 
 int main(int argc, const char * argv[]) {
-
+  
+  try {
     std::cout << "CTikz example" << std::endl;
     
-    
+    // number of samples
     const int N = 100;
+
+    // todo: show latex example files
     
-    
+    // ---------------------------------
     // --------- first example ---------
+    // ----------------------------------
     std::cout << "run first example (using std::vector)" << std::endl;
     
     // example data x and y are stored in two vectors
     std::vector<double> exampleX;
     std::vector<double> exampleY;
     for (int x=-N/2; x < N/2; ++x) {
-        int y = x * x;
-        exampleX.push_back(x);
-        exampleY.push_back(y);
+      int y = x * x;
+      exampleX.push_back(x);
+      exampleY.push_back(y);
     }
     CTikz tikz1;
     
@@ -38,19 +44,20 @@ int main(int argc, const char * argv[]) {
     tikz1.createTikzPdf("example1.tikz");
     
     
-    
+    // ----------------------------------
     // --------- second example ---------
-    std::cout << "run second example (using c array)" << std::endl;
+    // ----------------------------------
+    std::cout << "run second example (using C array)" << std::endl;
     
-    // example data x and y are stored in two c array
+    // example data x and y are stored in two C arrays
     double dataX[N];
     double dataY[N];
     int index = 0;
     for (int x=-N/2; x < N/2; ++x) {
-        int y = x * x;
-        dataX[index] = x;
-        dataY[index] = y;
-        index++;
+      int y = x * x;
+      dataX[index] = x;
+      dataY[index] = y;
+      index++;
     }
     
     CTikz tikz2;
@@ -62,9 +69,9 @@ int main(int argc, const char * argv[]) {
     tikz2.createTikzPdf("example2.tikz");
     
     
-    
-    
-    // --------- third example ---------
+    // ----------------------------------
+    // --------- third example ----------
+    // ----------------------------------
     std::cout << "run third example (using std::vector and two data sets)" << std::endl;
     
     // data example A are stored into a vector which contains pairs of double for x and y
@@ -75,10 +82,10 @@ int main(int argc, const char * argv[]) {
     
     // fill data vectors
     for (int x=-N/2; x<N/2; ++x) {
-        double yA = (double)x*x / (N*N/4.0);
-        double yB = (double)x*x*x / (N*N*N/8.0);
-        dataA.push_back(std::make_pair(x, yA));
-        dataB.push_back(std::make_pair(x, yB));
+      double yA = (double)x*x / (N*N/4.0);
+      double yB = (double)x*x*x / (N*N*N/8.0);
+      dataA.push_back(std::make_pair(x, yA));
+      dataB.push_back(std::make_pair(x, yB));
     }
     
     CTikz tikz3;
@@ -91,7 +98,7 @@ int main(int argc, const char * argv[]) {
     tikz3.gridOn();
     
     // set title, x label and y label
-    tikz3.setTitle("Second example");
+    tikz3.setTitle("Third example");
     tikz3.setLabel("x", "y");
     
     // set author and info text for tikz file
@@ -103,8 +110,9 @@ int main(int argc, const char * argv[]) {
     
     
     
-    
+    // ----------------------------------
     // --------- fourth example ---------
+    // ----------------------------------
     std::cout << "run fourth example (using std::vector, two data sets and additional settings)" << std::endl;
     
     
@@ -113,13 +121,19 @@ int main(int argc, const char * argv[]) {
     
     // add all data and specify user defined colors which are defined in your latex document
     // also change linestyle and marker and add comment in tikz file
-    tikz4.addData(dataA, "dataA", "myRed");
-    tikz4.addAddPlotStyle("dashed, mark=square, mark options={solid}, mark repeat=10");
-    tikz4.addDataComment("Comment for data A in tikz file");
+    gType_TIKZ_DataSet_st l_dataSet_st;
+    l_dataSet_st.data = dataA;
+    l_dataSet_st.comment = "Comment for data A in tikz file";
+    l_dataSet_st.color = "myRed";
+    l_dataSet_st.plotStyle = "dashed, mark=square, mark options={solid}, mark repeat=10";
     
-    tikz4.addData(dataB, "dataB", "myBlue");
-    tikz4.addAddPlotStyle("dotted, mark=*, mark options={solid}, mark repeat=10");
-    tikz4.addDataComment("Comment for data B in tikz file");
+    tikz4.addData(l_dataSet_st, "dataA");
+    
+    l_dataSet_st.data = dataB;
+    l_dataSet_st.comment = "Comment for data B in tikz file";
+    l_dataSet_st.color = "myBlue";
+    l_dataSet_st.plotStyle = "dotted, mark=*, mark options={solid}, mark repeat=10";
+    tikz4.addData(l_dataSet_st, "dataB");
     
     // when creating pdf files out from this c++ program, then define the user defined colors
     tikz4.addAdditionalLatexCommands("\\definecolor{myRed}{RGB}{220,30,30}");
@@ -130,7 +144,7 @@ int main(int argc, const char * argv[]) {
     tikz4.gridOn();
     
     // set title, x label and y label
-    tikz4.setTitle("Third example");
+    tikz4.setTitle("Fourth example");
     // use your own latex abbreviations
     tikz4.setLabel("$\\samplingfrequency$", "$\\snr$");
     
@@ -155,12 +169,14 @@ int main(int argc, const char * argv[]) {
     tikz4.createTikzPdf("example4.tikz");
     
     
-    
-
-
-    
-    
-    
-    
-    return 0;
+  } catch (CException & f_Exception) {
+    std::cout << "Exception occured: " << f_Exception.what() << std::endl;
+  } catch (std::exception& f_Exception) {
+    std::cout << "std::exception occured: " << f_Exception.what() << std::endl;
+  } catch (...) {
+    std::cout << "Unknown exception occured." << std::endl;
+  }
+  
+  
+  return 0;
 }
