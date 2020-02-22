@@ -121,19 +121,19 @@ int main(int argc, const char * argv[]) {
     
     // add all data and specify user defined colors which are defined in your latex document
     // also change linestyle and marker and add comment in tikz file
-    gType_TIKZ_DataSet_st l_dataSet_st;
-    l_dataSet_st.data = dataA;
-    l_dataSet_st.comment = "Comment for data A in tikz file";
-    l_dataSet_st.color = "myRed";
-    l_dataSet_st.plotStyle = "dashed, mark=square, mark options={solid}, mark repeat=10";
+    gType_TIKZ_DataSetEntry_st l_dataSetEntry_st;
+    l_dataSetEntry_st.data = dataA;
+    l_dataSetEntry_st.comment = "Comment for data A in tikz file";
+    l_dataSetEntry_st.color = "myRed";
+    l_dataSetEntry_st.plotStyle = "dashed, mark=square, mark options={solid}, mark repeat=10";
     
-    tikz4.addData(l_dataSet_st, "dataA");
+    tikz4.addData(l_dataSetEntry_st, "dataA");
     
-    l_dataSet_st.data = dataB;
-    l_dataSet_st.comment = "Comment for data B in tikz file";
-    l_dataSet_st.color = "myBlue";
-    l_dataSet_st.plotStyle = "dotted, mark=*, mark options={solid}, mark repeat=10";
-    tikz4.addData(l_dataSet_st, "dataB");
+    l_dataSetEntry_st.data = dataB;
+    l_dataSetEntry_st.comment = "Comment for data B in tikz file";
+    l_dataSetEntry_st.color = "myBlue";
+    l_dataSetEntry_st.plotStyle = "dotted, mark=*, mark options={solid}, mark repeat=10";
+    tikz4.addData(l_dataSetEntry_st, "dataB");
     
     // when creating pdf files out from this c++ program, then define the user defined colors
     tikz4.addAdditionalLatexCommands("\\definecolor{myRed}{RGB}{220,30,30}");
