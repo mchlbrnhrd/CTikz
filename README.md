@@ -30,6 +30,7 @@ Complete examples in [main.cpp](main.cpp).
 
 3. execute test code:
 ```
+> cd bin
 > ./CTikzApp
 ```
 
