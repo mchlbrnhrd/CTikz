@@ -18,9 +18,10 @@ tikz.createTikzPdf("example.tikz");
 Complete examples in [main.cpp](main.cpp).
 ## How to start
 
-1. clone project
+1. clone project and change directory
 ```
 > git clone https://github.com/mchlbrnhrd/CTikz
+> cd CTikz
 ```
 
 2. compile
