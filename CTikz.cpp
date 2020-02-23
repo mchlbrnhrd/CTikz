@@ -1,13 +1,16 @@
-/* 
- * File:   CTikz.cpp
- * Author: Michael Bernhard
+/**
+ * @file CTikz.cpp
+ * @brief CTikz class
+ * @author Michael Bernhard
  *
  * Created on 18. November 2017
  *
- * Description:
- *   Class to create Tikz files (Tikz ist kein Zeichenprogram) out of C array or data vector.
+ * @details Class to create Tikz files (Tikz ist kein Zeichenprogram) out of C array or data vector.
  *   Pdf preview and latex code can also be generated.
+ *
  */
+
+
 
 #include <vector>
 #include <fstream>

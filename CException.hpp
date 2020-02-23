@@ -1,7 +1,9 @@
 /**
- * @file
+ * @file CException.hpp
  * @brief Exception class
  * @author Michael Bernhard
+ *
+ * Created on 18. November 2017
  *
  * usage:\n
  * \code
@@ -9,17 +11,11 @@
  *   //...
  *   throw CException("exception...");
  *   //...
- * } catch(CException e) {
+ * } catch(CException& e) {
  *   std::cout << e.what();
  * }
  * \endcode
  *
- */
-/*
- * File:   CException.hpp
- * Author: Michael Bernhard
- *
- * Created on 18. November 2017
  */
 
 #ifndef _CEXCEPTION_HPP
@@ -41,7 +37,7 @@
  *     //...
  *     throw CException("Exception message...");
  *     //...
- *   } catch(CException e) {
+ *   } catch(CException& e) {
  *     std::cout << "CException: " << e.what() << std::endl;
  *   } catch (std::exception& e) {
  *     std::cout << "std exception: " << e.what() << std::endl;
@@ -54,21 +50,20 @@
  */
 class CException : public std::exception {
 public:
-    CException();
-    CException(const std::string& error_msg);
-    CException(const std::stringstream& error_msg);
-    CException(const std::ostringstream& error_msg);
-    virtual ~CException() throw ();
-    const char* what() const throw ();
-
-    static void myTerminate() {
-        std::cout << "unhandled CException" << std::endl;
-        exit(1);
-    };
+  CException();
+  CException(const std::string& f_errorMsg_s);
+  CException(const std::stringstream& f_errorMsg_ss);
+  CException(const std::ostringstream& f_errorMsg_ss);
+  virtual ~CException() throw ();
+  const char* what() const throw ();
+  
+  static void myTerminate() {
+    std::cout << "unhandled CException" << std::endl;
+    exit(1);
+  };
 private:
-    std::string m_error_msg;
-
+  std::string m_errorMsg_s;
+  
 };
 
 #endif	/* _CEXCEPTION_HPP */
-

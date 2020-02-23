@@ -1,10 +1,13 @@
-//
-//  main.cpp
-//  CTikzApplication
-//
-//  Created by Michael on 31.10.17.
-//  Copyright © 2017 ___MICHAEL_BERNHARD___. All rights reserved.
-//
+/**
+ * @file main.cpp
+ * @brief example using CTikz class
+ * @author Michael Bernhard
+ *
+ * Created on 18. November 2017
+ *
+ * @details Four examples how CTikz class can be used. Make sure latex is installed.
+ *
+ */
 
 #include <iostream>
 #include <vector>
@@ -234,3 +237,29 @@ void m_example4_vd(const int f_NumSamples_i)
   // create tikz and pdf file
   l_tikz_c.createTikzPdf_vd("example4.tikz");
 }
+
+
+// ========================================================================
+// naming convention
+// prefix:
+//   l  : local variable
+//   f  : function/method variable
+//   m  : private member of class
+//      : without prefix: public member of class
+//
+// postfix
+//   b  : bool
+//   c  : class
+//   d  : double
+//   f  : float
+//   i  : int
+//   s  : std::string
+//   st : struct
+//   ss : std::stringstream
+//   v  : vector
+//   vd : void
+//
+//   p  : pointer
+//   it : iterator
+//
+// ========================================================================

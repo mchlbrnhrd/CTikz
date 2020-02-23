@@ -1,7 +1,9 @@
 /**
- * @file
+ * @file CException.cpp
  * @brief Exception class
  * @author Michael Bernhard
+ *
+ * Created on 18. November 2017
  *
  * usage:\n
  * \code
@@ -10,7 +12,7 @@
  *     //...
  *     throw CException("Exception message...");
  *     //...
- *   } catch(CException e) {
+ *   } catch(CException& e) {
  *     std::cout << "CException: " << e.what() << std::endl;
  *   } catch (std::exception& e) {
  *     std::cout << "std exception: " << e.what() << std::endl;
@@ -21,12 +23,6 @@
  * \endcode
  *
  */
-/*
- * File:   CException.cpp
- * Author: Michael Bernhard
- *
- * Created on 18. November 2017
- */
 
 
 #include "CException.hpp"
@@ -35,27 +31,27 @@
 
 CException::CException() {
     std::set_terminate(myTerminate);
-    m_error_msg = "default exception";
+    m_errorMsg_s = "default exception";
 }
 
-CException::CException(const std::string& error_msg) {
+CException::CException(const std::string& f_errorMsg_s) {
     std::set_terminate(myTerminate);
-    m_error_msg = error_msg;
+    m_errorMsg_s = f_errorMsg_s;
 }
 
-CException::CException(const std::stringstream& error_msg) {
+CException::CException(const std::stringstream& f_errorMsg_ss) {
     std::set_terminate(myTerminate);
-    m_error_msg = error_msg.str();
+    m_errorMsg_s = f_errorMsg_ss.str();
 }
 
-CException::CException(const std::ostringstream& error_msg) {
+CException::CException(const std::ostringstream& f_errorMsg_ss) {
     std::set_terminate(myTerminate);
-    m_error_msg = error_msg.str();
+    m_errorMsg_s = f_errorMsg_ss.str();
 }
 
 CException::~CException() throw () {
 }
 
 const char* CException::what() const throw () {
-    return m_error_msg.c_str();
+    return m_errorMsg_s.c_str();
 }
