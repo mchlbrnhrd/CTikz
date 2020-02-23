@@ -17,10 +17,11 @@ ymin=-1,
 ymax=1,
 ylabel={y},
 ymajorgrids,
-title={Second example},
+title={Third example},
 legend style={draw=black,fill=white, legend cell align=left}
 ]
 \addplot [color=ctikzColorBlue,solid]
+% dataA
   table[row sep=crcr]{%
 -50	1\\
 -49	0.9604\\
@@ -123,9 +124,9 @@ legend style={draw=black,fill=white, legend cell align=left}
 48	0.9216\\
 49	0.9604\\
 };
-\label{addPlotLabel_94226370_0}
-\addlegendentry{dataA};
+\label{addPlotLabel_58691736_0}
 \addplot [color=ctikzColorRed,solid]
+% dataB
   table[row sep=crcr]{%
 -50	-1\\
 -49	-0.941192\\
@@ -228,8 +229,7 @@ legend style={draw=black,fill=white, legend cell align=left}
 48	0.884736\\
 49	0.941192\\
 };
-\label{addPlotLabel_94226370_1}
-\addlegendentry{dataB};
+\label{addPlotLabel_58691736_1}
 
 
 \end{axis}

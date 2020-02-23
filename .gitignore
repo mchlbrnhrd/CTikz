@@ -1,16 +1,13 @@
-CTikzApp
+# ignore bin folder
+bin/*
 
 # generated files from running CTikzApp
-example1.tikz
-example1.tikz.latex.pdf
-example1.tikz.latex.tex
-example2.tikz
-example2.tikz.latex.pdf
-example2.tikz.latex.tex
-example3.tikz
-example3.tikz.latex.pdf
-example3.tikz.latex.tex
-example4.tikz
-example4.tikz.latex.pdf
-example4.tikz.latex.tex
+*.tex
+*.tikz
+*.pdf
+
+# keep files in example folder
+!example/*.tex
+!example/*.tikz
+!example/*.pdf
 

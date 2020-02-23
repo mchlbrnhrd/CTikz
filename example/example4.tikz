@@ -17,13 +17,13 @@ ymin=-1,
 ymax=1,
 ylabel={$\snr$},
 ymajorgrids,
-title={Third example},
+title={Fourth example},
 legend pos={outer north east},
 legend style={draw=none}
 ]
 \addlegendimage{empty legend}
 \addplot [color=myRed,dashed, mark=square, mark options={solid}, mark repeat=10]
-% Comment for data A in tikz file
+% Comment for data A in tikz file.
   table[row sep=crcr]{%
 -50	1\\
 -49	0.9604\\
@@ -126,7 +126,7 @@ legend style={draw=none}
 48	0.9216\\
 49	0.9604\\
 };
-\label{addPlotLabel_94243177_0}
+\label{addPlotLabel_58725350_0}
 \addlegendentry{\hspace{-.6cm}My legend title};
 \addlegendentry{dataA};
 \addplot [color=myBlue,dotted, mark=*, mark options={solid}, mark repeat=10]
@@ -233,7 +233,7 @@ legend style={draw=none}
 48	0.884736\\
 49	0.941192\\
 };
-\label{addPlotLabel_94243177_1}
+\label{addPlotLabel_58725350_1}
 \addlegendentry{dataB};
 
 \node at (axis cs:10,-0.5) [text=myRed,anchor=south,rotate=0,font=\small] {nodeA};
