@@ -23,7 +23,7 @@ void m_example2_vd(const int f_NumSamples_i);
 // 3. example uses std::vector and std::pair and two data sets
 void m_example3_vd(const int f_NumSamples_i);
 
-// 4. example uses std::vector, std::pari, two data sets
+// 4. example uses std::vector, std::pair, two data sets
 // and additional settings (legend, nodes)
 void m_example4_vd(const int f_NumSamples_i);
 
@@ -159,7 +159,7 @@ void m_example3_vd(const int f_NumSamples_i)
 
 
 // ========================================================================
-// 4. example uses std::vector, std::pari, two data sets
+// 4. example uses std::vector, std::pair, two data sets
 // and additional settings (legend, nodes)
 // ========================================================================
 void m_example4_vd(const int f_NumSamples_i)
